@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Powered Project Management Bot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .whitespace-pre-wrap {
+      white-space: pre-wrap;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+  <header class="bg-gray-800 py-4 shadow-md">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">AI ProjectBot</h1>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Left Side: File Upload and Results -->
+    <section class="col-span-2 bg-gray-800 rounded-lg shadow-md p-6">
+      <h2 class="text-xl font-bold mb-4">Upload Request for Proposal(RFP) of Project(.txt)</h2>
+      <div class="flex items-center space-x-4">
+        <input type="file" id="fileInput" accept=".txt" class="file:py-2 file:px-4 file:rounded-md file:bg-blue-600 file:text-gray-100 file:font-semibold hover:file:bg-blue-700 focus:outline-none">
+        <button onclick="runAgents()" class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">Generate</button>
+      </div>
+
+      <div id="loader" class="mt-4 text-gray-400 italic"></div>
+
+      <div id="results" class="hidden mt-8">
+        <div>
+          <h3 class="text-lg font-semibold mb-2">User Story</h3>
+          <div class="bg-gray-700 p-4 rounded-lg shadow-inner whitespace-pre-wrap" id="user_story"></div>
+        </div>
+
+        <div class="mt-6">
+          <h3 class="text-lg font-semibold mb-2">Design</h3>
+          <div class="bg-gray-700 p-4 rounded-lg shadow-inner whitespace-pre-wrap" id="design"></div>
+        </div>
+
+        <div class="mt-6">
+          <h3 class="text-lg font-semibold mb-2">Code</h3>
+          <div class="bg-gray-700 p-4 rounded-lg shadow-inner whitespace-pre-wrap" id="code"></div>
+        </div>
+
+        <div class="mt-6">
+          <h3 class="text-lg font-semibold mb-2">Test Cases</h3>
+          <div class="bg-gray-700 p-4 rounded-lg shadow-inner whitespace-pre-wrap" id="test_case"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Side: Project Manager Chat -->
+    <section class="bg-gray-800 rounded-lg shadow-md p-6">
+      <h3 class="text-xl font-bold mb-4">Project Manager Chat</h3>
+      <div class="flex items-center space-x-2 mb-4">
+        <input type="text" id="managerQuery" placeholder="Ask something..." class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <button onclick="askManager()" class="px-4 py-2 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400">Send</button>
+      </div>
+      <div class="bg-gray-700 p-4 rounded-lg shadow-inner h-96 overflow-y-auto" id="managerChatOutput"></div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-800 py-4">
+    <div class="max-w-7xl mx-auto px-6 text-center text-gray-400">
+      <p>&copy; AI Powered Project Management Bot</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
